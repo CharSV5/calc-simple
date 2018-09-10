@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+
 import './App.css';
 
 class App extends Component {
@@ -7,16 +7,26 @@ class App extends Component {
     super(props);
 
     this.state = {
-      inputValue1: ''
+      inputValue1: '',
+      inputValue2: ''
     }  
     
 }
 
   handleClick(num) {
-    this.setState({
-      inputValue1: this.state.inputValue1 + num
-    })
-    console.log(this.state.inputValue1)
+    if (this.state.inputValue1 === '') {
+      this.setState({
+        inputValue1: this.state.inputValue1 + num
+      })
+    } else {
+      console.log(num)
+      this.setState({ 
+        inputValue2: this.state.inputValue2 + num
+      })
+    }
+    
+    console.log('1..', this.state.inputValue1)
+    console.log('2..',this.state.inputValue2)
   }
   render() {
     return (
