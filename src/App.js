@@ -8,7 +8,8 @@ class App extends Component {
 
     this.state = {
       inputValue1: '',
-      inputValue2: ''
+      inputValue2: '',
+      currentMaths: ''
     }  
     
 }
@@ -16,22 +17,30 @@ class App extends Component {
   handleClick(num) {
     if (this.state.inputValue1 === '') {
       this.setState({
-        inputValue1: this.state.inputValue1 + num
+        inputValue1:  num
       })
     } else {
       console.log(num)
       this.setState({ 
-        inputValue2: this.state.inputValue2 + num
+        inputValue2:  num
       })
     }
     
     console.log('1..', this.state.inputValue1)
     console.log('2..',this.state.inputValue2)
   }
+
+  handleMaths(maths) {
+    this.setState({
+      currentMaths: maths
+    })
+    console.log('maths', this.state.currentMaths)
+  }
   render() {
     return (
       <div className="App">
        <button onClick={() => this.handleClick(1)}>1</button>
+       <button onClick={() => this.handleMaths('+')}>+</button>
       </div>
     );
   }
