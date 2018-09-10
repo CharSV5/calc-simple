@@ -3,16 +3,25 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      inputValue1: ''
+    }  
+    
+}
+
+  handleClick(num) {
+    this.setState({
+      inputValue1: this.state.inputValue1 + num
+    })
+    console.log(this.state.inputValue1)
+  }
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+       <button onClick={() => this.handleClick(1)}>1</button>
       </div>
     );
   }
