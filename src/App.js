@@ -9,7 +9,8 @@ class App extends Component {
     this.state = {
       inputValue1: '',
       inputValue2: '',
-      currentMaths: ''
+      currentMaths: '',
+      answer: 0
     }  
     
 }
@@ -36,11 +37,20 @@ class App extends Component {
     })
     console.log('maths', this.state.currentMaths)
   }
+
+  handleEquals() {
+    this.setState({
+      answer: this.state.inputValue1 + this.state.inputValue2
+    })
+  }
+
   render() {
     return (
       <div className="App">
        <button onClick={() => this.handleClick(1)}>1</button>
        <button onClick={() => this.handleMaths('+')}>+</button>
+       <button onClick={() => this.handleEquals()}>=</button>
+       {this.state.answer}
       </div>
     );
   }
