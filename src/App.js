@@ -32,9 +32,13 @@ handleSubmit(event) {
     this.setState({
       answer: (parseInt(this.state.inputValue1) + parseInt(this.state.inputValue2))
     })
-  } else {
+  } else if (this.state.currentMaths === '-') {
     this.setState({
       answer: (parseInt(this.state.inputValue1) - parseInt(this.state.inputValue2))
+    })
+  } else {
+    this.setState({
+      answer: (parseInt(this.state.inputValue1) / parseInt(this.state.inputValue2))
     })
   }
   event.preventDefault();
@@ -59,6 +63,7 @@ handleClick(maths) {
         </label>
         <button onClick={() => this.handleClick('+')}>+</button>
         <button onClick={() => this.handleClick('-')}>-</button>
+        <button onClick={() => this.handleClick('/')}>/</button>
         <label>
           Input 2
           <input name="inputValue2" type="text" value={this.state.inputValue2} onChange={this.handleChange} />
