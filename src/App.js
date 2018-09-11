@@ -7,49 +7,59 @@ class App extends Component {
     super(props);
 
     this.state = {
-      inputValue1: '',
-      inputValue2: '',
-      currentMaths: '',
+      inputValue1: null,
+      inputValue2: null,
+      currentMaths: null,
       answer: 0
     }  
-    
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+
 }
 
-  handleClick(num) {
-    if (this.state.inputValue1 === '') {
-      this.setState({
-        inputValue1:  num
-      })
-    } else {
-      console.log(num)
-      this.setState({ 
-        inputValue2:  num
-      })
-    }
+handleChange (event) {
+  this.setState({
+    [event.target.name]: event.target.value
     
-    console.log('1..', this.state.inputValue1)
-    console.log('2..',this.state.inputValue2)
-  }
+  })
+}
 
-  handleMaths(maths) {
-    this.setState({
-      currentMaths: maths
-    })
-    console.log('maths', this.state.currentMaths)
-  }
+// handleChange (event) {
+//   this.setState({
+//     [event.target.name]: event.target.value
+//   })
+//   if (this.state.inputValue2) {
+//     this.setState({
+//     answer: (parseInt(this.state.inputValue1) + parseInt(this.state.inputValue2))
+//     })
+//   }
+// }
 
-  handleEquals() {
-    this.setState({
-      answer: this.state.inputValue1 + this.state.inputValue2
-    })
-  }
+handleSubmit(event) {
+  this.setState({
+    answer: (parseInt(this.state.inputValue1) + parseInt(this.state.inputValue2))
+  })
+  event.preventDefault();
+}
+
 
   render() {
     return (
       <div className="App">
-       <button onClick={() => this.handleClick(1)}>1</button>
-       <button onClick={() => this.handleMaths('+')}>+</button>
-       <button onClick={() => this.handleEquals()}>=</button>
+      <form onSubmit={this.handleSubmit}>
+       <label>
+          Input 1
+          <input name="inputValue1" type="text" value={this.state.inputValue1} onChange={this.handleChange} />
+        </label>
+        <label>
+          Input 2
+          <input name="inputValue2" type="text" value={this.state.inputValue2} onChange={this.handleChange} />
+        </label>
+        <input type="submit" value="=" />
+        </form>
+    
+       =
+      
        {this.state.answer}
       </div>
     );
