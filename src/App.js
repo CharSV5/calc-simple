@@ -15,6 +15,10 @@ class App extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.plus = this.plus.bind(this);
+    this.minus = this.minus.bind(this);
+    this.divide = this.divide.bind(this);
+    this.multiply = this.multiply.bind(this);
 
 }
 
@@ -50,6 +54,11 @@ multiply(inputValue1, inputValue2) {
   })
 }
 
+decideMaths(currentMathsFunc, inputValue1, inputValue2) {
+  return currentMathsFunc(inputValue1, inputValue2)
+}
+
+
 // imaPureFunction(input1, input2){
 //   return Math.random(1) + input2
 // }
@@ -60,20 +69,21 @@ multiply(inputValue1, inputValue2) {
 // }
 
 handleSubmit(event) {
+  event.preventDefault();
   const inputValue1 = this.state.inputValue1
   const inputValue2 = this.state.inputValue2
 
 
   if (this.state.currentMaths === '+') {
-    this.plus(inputValue1, inputValue2)
+    this.decideMaths(this.plus, inputValue1, inputValue2)
   } else if (this.state.currentMaths === '-') {
-    this.minus(inputValue1, inputValue2)
+    this.decideMaths(this.minus, inputValue1, inputValue2)
   } else if (this.state.currentMaths === '/') {
-    this.divide(inputValue1, inputValue2)
+    this.decideMaths(this.divide, inputValue1, inputValue2)
   } else {
-    this.multiply(inputValue1, inputValue2)
+    this.decideMaths(this.multiply, inputValue1, inputValue2)
   }
-  event.preventDefault();
+  
 }
 
 
