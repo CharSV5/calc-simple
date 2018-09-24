@@ -111,9 +111,6 @@ handleClick(maths) {
         </label>
         <input type="submit" value="=" />
         </form>
-    
-       =
-      
        {this.state.answer}
       </div>
     );
