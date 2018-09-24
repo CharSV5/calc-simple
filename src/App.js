@@ -58,32 +58,30 @@ decideMaths(currentMathsFunc, inputValue1, inputValue2) {
   return currentMathsFunc(inputValue1, inputValue2)
 }
 
-
-// imaPureFunction(input1, input2){
-//   return Math.random(1) + input2
-// }
-
-// ImNOTaPurefunction(input1, imaPureFunction) {
-//   const sum = imaPureFunction(2, 2)
-//   return  input1 + sum
-// }
-
 handleSubmit(event) {
   event.preventDefault();
   const inputValue1 = this.state.inputValue1
   const inputValue2 = this.state.inputValue2
+  let currentMathsFunc = ''
 
+  switch(this.state.currentMaths) {
+    case '+':
+    currentMathsFunc = this.plus
+    break;
 
-  if (this.state.currentMaths === '+') {
-    this.decideMaths(this.plus, inputValue1, inputValue2)
-  } else if (this.state.currentMaths === '-') {
-    this.decideMaths(this.minus, inputValue1, inputValue2)
-  } else if (this.state.currentMaths === '/') {
-    this.decideMaths(this.divide, inputValue1, inputValue2)
-  } else {
-    this.decideMaths(this.multiply, inputValue1, inputValue2)
+    case '-':
+    currentMathsFunc = this.minus
+    break;
+
+    case '/':
+    currentMathsFunc = this.divide
+    break;
+
+    case '*':
+    currentMathsFunc = this.multiply
+    break;
   }
-  
+  this.decideMaths(currentMathsFunc, inputValue1, inputValue2)
 }
 
 
