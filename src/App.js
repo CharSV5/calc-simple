@@ -26,23 +26,44 @@ handleChange (event) {
   })
 }
 
+plus(inputValue1, inputValue2) {
+    this.setState({
+      answer: (parseInt(inputValue1) + parseInt(inputValue2))
+    })
+}
+
+minus(inputValue1, inputValue2) {
+  this.setState({
+    answer: (parseInt(inputValue1) - parseInt(inputValue2))
+  })
+}
+
+// imaPureFunction(input1, input2){
+//   return Math.random(1) + input2
+// }
+
+// ImNOTaPurefunction(input1, imaPureFunction) {
+//   const sum = imaPureFunction(2, 2)
+//   return  input1 + sum
+// }
 
 handleSubmit(event) {
+  const inputValue1 = this.state.inputValue1
+  const inputValue2 = this.state.inputValue2
+
+
   if (this.state.currentMaths === '+') {
-    this.setState({
-      answer: (parseInt(this.state.inputValue1) + parseInt(this.state.inputValue2))
-    })
+    this.plus(inputValue1, inputValue2)
+
   } else if (this.state.currentMaths === '-') {
-    this.setState({
-      answer: (parseInt(this.state.inputValue1) - parseInt(this.state.inputValue2))
-    })
+    this.minus(inputValue1, inputValue2)
   } else if (this.state.currentMaths === '/') {
     this.setState({
-      answer: (parseInt(this.state.inputValue1) / parseInt(this.state.inputValue2))
+      answer: (parseInt(inputValue1) / parseInt(inputValue2))
     })
   } else {
     this.setState({
-      answer: (parseInt(this.state.inputValue1) * parseInt(this.state.inputValue2))
+      answer: (parseInt(inputValue1) * parseInt(inputValue2))
     })
   }
   event.preventDefault();
