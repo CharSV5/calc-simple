@@ -38,6 +38,18 @@ minus(inputValue1, inputValue2) {
   })
 }
 
+divide(inputValue1, inputValue2) {
+  this.setState({
+    answer: (parseInt(inputValue1) / parseInt(inputValue2))
+  })
+}
+
+multiply(inputValue1, inputValue2) {
+  this.setState({
+    answer: (parseInt(inputValue1) * parseInt(inputValue2))
+  })
+}
+
 // imaPureFunction(input1, input2){
 //   return Math.random(1) + input2
 // }
@@ -54,17 +66,12 @@ handleSubmit(event) {
 
   if (this.state.currentMaths === '+') {
     this.plus(inputValue1, inputValue2)
-
   } else if (this.state.currentMaths === '-') {
     this.minus(inputValue1, inputValue2)
   } else if (this.state.currentMaths === '/') {
-    this.setState({
-      answer: (parseInt(inputValue1) / parseInt(inputValue2))
-    })
+    this.divide(inputValue1, inputValue2)
   } else {
-    this.setState({
-      answer: (parseInt(inputValue1) * parseInt(inputValue2))
-    })
+    this.multiply(inputValue1, inputValue2)
   }
   event.preventDefault();
 }
