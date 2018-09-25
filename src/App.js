@@ -59,7 +59,6 @@ class App extends Component {
   }
 
   handleSubmit(event) {
-    console.log('submit!')
     event.preventDefault();
     const inputValue1 = this.state.inputValue1
     const inputValue2 = this.state.inputValue2
@@ -105,6 +104,10 @@ class App extends Component {
       })
     }
   }
+
+ 
+
+
   
 
 
@@ -114,6 +117,14 @@ class App extends Component {
         
           <button onClick={() => this.handleNum(1)}>1</button>
           <button onClick={() => this.handleNum(2)}>2</button>
+          <button onClick={() => this.handleNum(3)}>3</button>
+          <button onClick={() => this.handleNum(4)}>4</button>
+          <button onClick={() => this.handleNum(5)}>5</button>
+          <button onClick={() => this.handleNum(6)}>6</button>
+          <button onClick={() => this.handleNum(7)}>7</button>
+          <button onClick={() => this.handleNum(8)}>8</button>
+          <button onClick={() => this.handleNum(9)}>9</button>
+          <button onClick={() => this.handleNum(0)}>0</button>
           <button onClick={() => this.handleClick('+')}>+</button>
           <button onClick={() => this.handleClick('-')}>-</button>
           <button onClick={() => this.handleClick('/')}>/</button>
