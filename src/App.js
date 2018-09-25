@@ -14,6 +14,7 @@ class App extends Component {
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.handleNum = this.handleNum.bind(this);
     this.plus = this.plus.bind(this);
     this.minus = this.minus.bind(this);
     this.divide = this.divide.bind(this);
@@ -21,8 +22,6 @@ class App extends Component {
     this.decideMaths = this.decideMaths.bind(this);
 
   }
-
-
 
   handleChange(event) {
     this.setState({
@@ -66,7 +65,6 @@ class App extends Component {
 
     switch (this.state.currentMaths) {
       case '+':
-        
         currentMathsFunc = this.plus
         break;
 
@@ -85,8 +83,6 @@ class App extends Component {
     this.decideMaths(currentMathsFunc, inputValue1, inputValue2)
   }
 
-
-
   handleClick(maths) {
     this.setState({
       currentMaths: maths
@@ -94,7 +90,7 @@ class App extends Component {
   }
 
   handleNum(num) {
-    if(this.state.inputValue1 === 0) {
+    if (this.state.inputValue1 === 0) {
       this.setState({
         inputValue1: num
       })
@@ -105,31 +101,28 @@ class App extends Component {
     }
   }
 
- 
-
-
-  
-
+  handleClear() { }
 
   render() {
+    const numArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
+    const opArray = ['+', '-', '/', '*']
+    let numRow = []
+    const buttonsMaker = (myArray, eventHandler) => {
+      for (let i of myArray) {
+        numRow.push(<button onClick={() => eventHandler(i)} key={i}>{i}</button>)
+      }
+    }
+
+    buttonsMaker(numArray, this.handleNum)
+    buttonsMaker(opArray, this.handleClick)
+
     return (
       <div className="App">
-        
-          <button onClick={() => this.handleNum(1)}>1</button>
-          <button onClick={() => this.handleNum(2)}>2</button>
-          <button onClick={() => this.handleNum(3)}>3</button>
-          <button onClick={() => this.handleNum(4)}>4</button>
-          <button onClick={() => this.handleNum(5)}>5</button>
-          <button onClick={() => this.handleNum(6)}>6</button>
-          <button onClick={() => this.handleNum(7)}>7</button>
-          <button onClick={() => this.handleNum(8)}>8</button>
-          <button onClick={() => this.handleNum(9)}>9</button>
-          <button onClick={() => this.handleNum(0)}>0</button>
-          <button onClick={() => this.handleClick('+')}>+</button>
-          <button onClick={() => this.handleClick('-')}>-</button>
-          <button onClick={() => this.handleClick('/')}>/</button>
-          <button onClick={() => this.handleClick('*')}>*</button>
-          <form onSubmit={this.handleSubmit}>
+        <div>{numRow}</div>
+        <form onsubmit={this.handleClear}>
+          <input type="submit" value="C" />
+        </form>
+        <form onSubmit={this.handleSubmit}>
           <input type="submit" value="=" />
         </form>
         {this.state.answer}
