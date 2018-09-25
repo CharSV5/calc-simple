@@ -14,6 +14,7 @@ class App extends Component {
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.handleNum = this.handleNum.bind(this);
     this.plus = this.plus.bind(this);
     this.minus = this.minus.bind(this);
     this.divide = this.divide.bind(this);
@@ -63,7 +64,7 @@ class App extends Component {
     let currentMathsFunc = ''
 
     switch (this.state.currentMaths) {
-      case '+': 
+      case '+':
         currentMathsFunc = this.plus
         break;
 
@@ -89,7 +90,7 @@ class App extends Component {
   }
 
   handleNum(num) {
-    if(this.state.inputValue1 === 0) {
+    if (this.state.inputValue1 === 0) {
       this.setState({
         inputValue1: num
       })
@@ -100,38 +101,28 @@ class App extends Component {
     }
   }
 
-  handleClear() {}
-
-  numButtons() {
-    
-  }
+  handleClear() { }
 
   render() {
     const numArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
     const opArray = ['+', '-', '/', '*']
     let numRow = []
-    const numButtons = () => {
-      for(let i of numArray) {
-       numRow.push(<button onClick={() => this.handleNum(i)} key={i}>{i}</button>)
+    const buttonsMaker = (myArray, eventHandler) => {
+      for (let i of myArray) {
+        numRow.push(<button onClick={() => eventHandler(i)} key={i}>{i}</button>)
       }
     }
 
-    numButtons()
+    buttonsMaker(numArray, this.handleNum)
+    buttonsMaker(opArray, this.handleClick)
 
     return (
       <div className="App">
-
-      <div>{numRow}</div>
-        
-          
-          <button onClick={() => this.handleClick('+')}>+</button>
-          <button onClick={() => this.handleClick('-')}>-</button>
-          <button onClick={() => this.handleClick('/')}>/</button>
-          <button onClick={() => this.handleClick('*')}>*</button>
-          <form onsubmit={this.handleClear}>
+        <div>{numRow}</div>
+        <form onsubmit={this.handleClear}>
           <input type="submit" value="C" />
-          </form>
-          <form onSubmit={this.handleSubmit}>
+        </form>
+        <form onSubmit={this.handleSubmit}>
           <input type="submit" value="=" />
         </form>
         {this.state.answer}
