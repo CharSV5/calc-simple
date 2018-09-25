@@ -22,8 +22,6 @@ class App extends Component {
 
   }
 
-
-
   handleChange(event) {
     this.setState({
       [event.target.name]: event.target.value
@@ -65,8 +63,7 @@ class App extends Component {
     let currentMathsFunc = ''
 
     switch (this.state.currentMaths) {
-      case '+':
-        
+      case '+': 
         currentMathsFunc = this.plus
         break;
 
@@ -84,8 +81,6 @@ class App extends Component {
     }
     this.decideMaths(currentMathsFunc, inputValue1, inputValue2)
   }
-
-
 
   handleClick(maths) {
     this.setState({
@@ -105,30 +100,37 @@ class App extends Component {
     }
   }
 
- 
+  handleClear() {}
 
-
-  
-
+  numButtons() {
+    
+  }
 
   render() {
+    const numArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
+    const opArray = ['+', '-', '/', '*']
+    let numRow = []
+    const numButtons = () => {
+      for(let i of numArray) {
+       numRow.push(<button onClick={() => this.handleNum(i)} key={i}>{i}</button>)
+      }
+    }
+
+    numButtons()
+
     return (
       <div className="App">
+
+      <div>{numRow}</div>
         
-          <button onClick={() => this.handleNum(1)}>1</button>
-          <button onClick={() => this.handleNum(2)}>2</button>
-          <button onClick={() => this.handleNum(3)}>3</button>
-          <button onClick={() => this.handleNum(4)}>4</button>
-          <button onClick={() => this.handleNum(5)}>5</button>
-          <button onClick={() => this.handleNum(6)}>6</button>
-          <button onClick={() => this.handleNum(7)}>7</button>
-          <button onClick={() => this.handleNum(8)}>8</button>
-          <button onClick={() => this.handleNum(9)}>9</button>
-          <button onClick={() => this.handleNum(0)}>0</button>
+          
           <button onClick={() => this.handleClick('+')}>+</button>
           <button onClick={() => this.handleClick('-')}>-</button>
           <button onClick={() => this.handleClick('/')}>/</button>
           <button onClick={() => this.handleClick('*')}>*</button>
+          <form onsubmit={this.handleClear}>
+          <input type="submit" value="C" />
+          </form>
           <form onSubmit={this.handleSubmit}>
           <input type="submit" value="=" />
         </form>
