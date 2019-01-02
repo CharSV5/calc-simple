@@ -116,29 +116,29 @@ class App extends Component {
       }
     }
 
-    buttonsMaker(numArray.slice(0,3), numRow1, this.handleNum)
-    buttonsMaker(numArray.slice(4,7), numRow2, this.handleNum)
-    buttonsMaker(numArray.slice(7,11), numRow3, this.handleNum)
+    buttonsMaker(numArray.slice(0, 3), numRow1, this.handleNum)
+    buttonsMaker(numArray.slice(4, 7), numRow2, this.handleNum)
+    buttonsMaker(numArray.slice(7, 11), numRow3, this.handleNum)
     buttonsMaker(opArray, opRow, this.handleClick)
 
     return (
       <div className="box">
-      <div className="display">
-      {this.state.answer}
-      </div>
-      <div className="keys">
-        <div className="button">{numRow1}</div>
-        <div className="button">{numRow2}</div>
-        <div className="button">{numRow3}</div>
-        <div className="button">{opRow}</div>
-        <div className="ops">
-        <form onsubmit={this.handleClear}>
-          <input className="button" type="submit" value="C" />
-        </form>
+        <div className="display">
+          {this.state.answer}
         </div>
-        <form onSubmit={this.handleSubmit}>
-          <input className="button1" type="submit" value="=" />
-        </form>
+        <div className="keys">
+          <div className="button">{numRow1}</div>
+          <div className="button">{numRow2}</div>
+          <div className="button">{numRow3}</div>
+          <div className="button">{opRow}</div>
+          <div className="ops">
+            <form onsubmit={this.handleClear}>
+              <input className="button" type="submit" value="C" />
+            </form>
+          </div>
+          <form onSubmit={this.handleSubmit}>
+            <input className="button1" type="submit" value="=" />
+          </form>
         </div>
       </div>
     );
